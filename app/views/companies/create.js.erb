@@ -1,0 +1,10 @@
+<% if @company.errors.any? %>
+
+
+<% else %>
+  $('#myModal').modal("hide");
+  $("table#company tbody").prepend('<%= j render partial:'company', :locals => {:company => @company } %>');
+  // $('#new_company').remove()
+  // $('#new_link').show()
+
+<% end %>

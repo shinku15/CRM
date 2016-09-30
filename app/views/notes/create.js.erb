@@ -1,0 +1,13 @@
+<% if @note.errors.any? %>
+
+
+<% else %>
+  $('#myModal').modal("hide");
+  $("table#note tbody").prepend('<%= j render partial:'note', :locals => {:note => @note } %>');
+  
+  $("table#company_feed tbody").prepend('<%= j render partial:'companies/feed', :locals => {:feed => @feed } %>');
+  
+  $("table#feed tbody").prepend('<%= j render partial:'feeds/feed', :locals => {:feed => @feed } %>');
+  // $('#new_note').remove()
+  // $('#new_link').show()
+<% end %>

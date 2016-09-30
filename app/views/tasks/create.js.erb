@@ -1,0 +1,9 @@
+<% if @task.errors.any? %>
+
+
+<% else %>
+  $('#myModal').modal("hide");
+  $("table#task tbody").prepend('<%= j render partial:'task', :locals => {:task => @task } %>');
+  // $('#new_task').remove()
+  // $('#new_link').show()
+<% end %>

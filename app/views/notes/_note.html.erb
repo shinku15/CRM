@@ -1,0 +1,10 @@
+
+      <tr data-note-id='<%= note.id%>'>
+        <td><%= note.description %></td>
+        <td><%= note.company.name %></td>
+        <td><%= note.user.email %></td>
+        <td><%= link_to 'Show',company_note_path(@company,note) %></td>
+        <td><%= link_to 'Edit',edit_company_note_path(@company,note),remote: true, 'data-toggle': "modal",'data-target': "#myModal"  %></td>
+        <td><%= link_to 'Destroy', company_note_path(@company,note), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+   

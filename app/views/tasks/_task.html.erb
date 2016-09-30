@@ -1,0 +1,12 @@
+
+      <tr data-task-id='<%= task.id%>'>
+        <td><%= task.description %></td>
+        <td><%= task.company.name %></td>
+        <td><%= task.completed_on %></td>
+        <td><%= task.user.email %></td>
+        <td><%= task.assigned.email %></td>
+        <td><%= task.is_completed %></td>
+        <td><%= link_to 'Show',company_task_path(@company,task) %></td>
+        <td><%= link_to 'Edit', edit_company_task_path(@company,task),remote: true, 'data-toggle': "modal",'data-target': "#myModal"  %></td>
+        <td><%= link_to 'Destroy', company_task_path(@company,task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>

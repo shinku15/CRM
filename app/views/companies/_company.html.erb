@@ -1,0 +1,21 @@
+
+<tr data-company-id='<%= company.id%>'>
+    <td>
+        <div class="media">
+              <div class="media-left">
+                <h3><strong><%= company.name %></strong></h3><br/>
+              </div>
+                  <div class="media-body">
+                        <h4 class="media-heading"><%= company.email %></h4>
+                        <%= company.address %><br/>
+                        <%= company.contact %><br/>
+                        <%= company.organization.name %><br/>
+                        <small><%= link_to 'Show', company %></small>
+                        <small><%= link_to 'Edit', edit_company_path(company),remote: true,'data-toggle': "modal",'data-target': "#myModal" %></small>
+                        <small><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></small>
+                  </div>
+        </div>
+    </td>
+</tr>
+
+

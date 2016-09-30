@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+<%= link_to "New Company", new_company_path, id: 'new_link',remote: true,'data-toggle': "modal",'data-target': "#myModal",class: "pull-right" %>
+<div>
+
+
+<h1>Companies</h1>
+
+<div class="panel panel-default">
+
+<table id="company" class="table table-striped table-bordered table-hover">
+ 
+
+  <tbody>
+    <%= render @companies %>
+  </tbody>
+</table>
+
+</div>
+
+
+

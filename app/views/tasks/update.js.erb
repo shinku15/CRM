@@ -1,0 +1,2 @@
+$('#myModal').modal("hide");
+$("tr[data-task-id='<%= @task.id %>']").replaceWith('<%= j render partial: 'task', :locals => {:task => @task } %>');

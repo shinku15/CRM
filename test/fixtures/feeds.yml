@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  feedable_id: 1
+  feedable_type: MyString
+  organization: one
+
+two:
+  feedable_id: 1
+  feedable_type: MyString
+  organization: two
