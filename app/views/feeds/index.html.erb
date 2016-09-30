@@ -2,25 +2,11 @@
 
 <h1><strong>feeds</strong></h1>
 
-<div class="panel panel-default" table='feed'>
-    <table class="table">
-    <% @feeds.each do |feed| %>
-      <tr data-feed-id='<%= feed.id%>'>
-        <td>
-            <div class="media">
-              <div class="media-left">
-                <%= feed.feedable_type %><br/>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading"><%= feed.organization.name %></h4>
-                <%= feed.content %>
-                <br/>
-                <small><%= feed.created_at %></small>
-              </div>
-            </div>
-
-        </td>
-      </tr>
-    <% end %>
+<div class="panel panel-default">
+      <table class="table" id="feed">
+          <tbody>
+          <%= render @feeds %>
+          </tbody>
+     
     </table>
 </div>

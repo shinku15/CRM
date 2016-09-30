@@ -2,8 +2,12 @@ Rails.application.routes.draw do
   
   resources :companies do 
       resources :notes
-      resources :tasks
-    
+        resources :tasks do
+          member do
+            put :complete
+            delete :feed_destroy
+          end
+      end
    end
 
 

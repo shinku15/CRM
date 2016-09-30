@@ -1,2 +1,7 @@
 $('#myModal').modal("hide");
 $("tr[data-task-id='<%= @task.id %>']").replaceWith('<%= j render partial: 'task', :locals => {:task => @task } %>');
+
+<% if @feed %>
+$("tr[data-feed-id='<%= @feed.id%>']").replaceWith('<%= j render partial: 'feeds/feed', :locals => {:feed => @feed } %>');
+$("tr[data-company-feed-id='<%= @feed.id%>']").replaceWith('<%= j render partial: 'companies/feed', :locals => {:feed => @feed } %>');
+<% end %>

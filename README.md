@@ -95,3 +95,17 @@ _feed.html.erb
         <td><%= feed.created_at %></td>
         <td><%= feed.content %></td>
       </tr>
+
+
+_task.html.erb
+<td><%= task.description %></td>
+        <td><%= task.company.name %></td>
+        <td><%= task.completed_on %></td>
+        <td><%= task.user.email %></td>
+        <td><%= task.assigned.email %></td>
+        <td><%= task.is_completed %></td>
+        <td><%= link_to 'Show',company_task_path(@company,task) %></td>
+        <td><%= link_to 'Edit', edit_company_task_path(@company,task),remote: true, 'data-toggle': "modal",'data-target': "#myModal"  %></td>
+        <td><%= link_to 'Destroy', company_task_path(@company,task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+@feed.update_attributes(content: @task.description)        

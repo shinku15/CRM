@@ -1,0 +1,4 @@
+$("#company_task tr[data-task-id='<%= @task.id %>']").remove();
+<% if @feed %>
+$("tr[data-company-feed-id='<%=@feed.id%>']").remove()
+<% end %>

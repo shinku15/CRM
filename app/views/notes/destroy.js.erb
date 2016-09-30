@@ -1,0 +1,4 @@
+$("#note tr[data-note-id='<%= @note.id %>']").remove();
+<% if @feed %>
+$("tr[data-company-feed-id='<%=@feed.id%>']").remove();
+<% end %>

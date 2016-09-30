@@ -11,14 +11,14 @@
                         
                         <% if feed.feedable_type=='Note' %>
 
-                         <strong><%= link_to 'Edit',edit_company_note_path(feed.company_id,feed.feedable_id),remote: true, 'data-toggle': 
+                         <strong><%= link_to 'Edit',edit_company_note_path(feed.company_id, feed.feedable_id),remote: true, 'data-toggle': 
                          "modal",'data-target': "#myModal"  %></strong>
-                          <strong><%= link_to 'Destroy', company_note_path(feed.company_id,feed.feedable_id), method: :delete, data: { confirm: 
-                            'Are you sure?' } %></strong>
+                          <strong><%= link_to 'Destroy', company_note_path(feed.company_id, feed.feedable_id), method: :delete, data: { confirm: 
+                            'Are you sure?' }, remote: true %></strong>
                         
                         <% else %>
                           <strong><%= link_to 'Edit', edit_company_task_path(feed.company_id,feed.feedable_id),remote: true, 'data-toggle': "modal",'data-target': "#myModal"  %></strong>
-                          <strong><%= link_to 'Destroy', company_task_path(feed.company_id,feed.feedable_id), method: :delete, data: { confirm: 'Are you sure?' } %></strong>
+                          <strong><%= link_to 'Destroy', company_task_path(feed.company_id,feed.feedable_id), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></strong>
 
                         <% end %>
                   </div>

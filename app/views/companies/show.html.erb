@@ -1,8 +1,8 @@
 <div class="row">
 
   <div class="row">
-      <%= link_to 'New Notes ', new_company_note_path(@company),remote: true, 'data-toggle': "modal",'data-target': "#myModal",class: "pull-right" %>
-      <%= link_to 'New Task ', new_company_task_path(@company),remote: true, 'data-toggle': "modal",'data-target': "#myModal", class: "pull-right" %>&nbsp;&nbsp;
+      <%= link_to 'New Notes ', new_company_note_path(@company),remote: true, 'data-toggle': "modal",'data-target': "#myModal",class: "pull-right", style: 'margin-right:10px;' %>
+      <%= link_to 'New Task ', new_company_task_path(@company),remote: true, 'data-toggle': "modal",'data-target': "#myModal", class: "pull-right", style: 'margin-right:10px;' %>
   </div>
 
   <div class="col-md-2">
@@ -36,19 +36,33 @@
 
 <div class="col-md-6">
 
-<div class="panel panel-default">
-    <table class="table table-striped table-bordered table-hover" id="company_feed">
-      
-        <tbody>
-          <%= render collection: @feeds, partial: 'feed' %>
-        </tbody>
-    </table>
-</div>
-
+    <div class="panel panel-default">
+        <table class="table table-striped table-bordered table-hover" id="company_feed">
+          
+            <tbody>
+              <%= render collection: @feeds, partial: 'feed' %>
+            </tbody>
+        </table>
+    </div>
 
 </div>
 
 <div class="col-md-4">
+
+<div class="panel panel-default">
+<h3>
+  Tasks
+</h3>
+    <div class="panel panel-default">
+        <table class="table table-striped table-bordered table-hover" id="company_task">
+            <tbody>
+              <%= render collection: @tasks, partial: 'tasks/task' %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
 </div>
 </div>
 

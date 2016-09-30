@@ -78,23 +78,27 @@ class TasksController < ApplicationController
     @user = current_user
     @company = Company.find(params[:company_id])
     @task = Task.find(params[:id])
+    @feed = @task.feed
 
-    respond_to do |format|
 
-
-      if @task.update(task_params)
-        if @task.is_completed
-          @task.update_attributes(completed_at: Date.today, completed_by: current_user.id)
-          @feed = @task.feeds.create(organization_id: @organization.id, company_id: @company.id, content: @task.description)
-        end
-        format.html { redirect_to company_task_path(@company, @task), notice: 'Task was successfully updated.' }
-        format.js
-        format.json { render :show, status: :ok, location: @task }
-      else
-        format.html { render :edit }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
-      end
-    end
+      respond_to do |format|
+          if @task.update_attributes(task_params)
+            
+            if @feed
+                  @feed.update_attributes(content: @task.description)
+                else 
+            end
+                  format.html { redirect_to company_task_path(@company, @task), notice: 'Task was successfully updated.' }
+                  format.js
+                  format.json { render :show, status: :ok, location: @task }
+            else
+                    
+                  format.html { render :edit }
+                  format.js
+                  format.json { render json: @task.errors, status: :unprocessable_entity }
+          
+            end
+         end 
   end
 
   # DELETE /tasks/1
@@ -105,13 +109,28 @@ class TasksController < ApplicationController
     @user = current_user
     @company = Company.find(params[:company_id])
     @task = Task.find(params[:id])
-
+    @feed = @task.feed
+    
     @task.destroy
     respond_to do |format|
       format.html { redirect_to company_tasks_path(@company), notice: 'Task was successfully destroyed.' }
+      format.js
       format.json { head :no_content }
     end
   end
+
+  def complete
+    @organization = current_user.organization
+    @user = current_user
+    @company = Company.find(params[:company_id])
+    @task = @company.tasks.find(params[:id])
+    
+    if @task.update_attributes(completed_at: Date.today, completed_by: current_user.id, is_completed: true) 
+      @feed = @task.build_feed(organization_id: @organization.id, company_id: @company.id, content: @task.description)
+      @feed.save
+    end
+  end
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,0 +1,7 @@
+<% if @task.errors.any? %>
+
+<% else %>
+$("table#company_feed tbody").prepend('<%= j render partial:'companies/feed', :locals => {:feed => @feed } %>');
+$("table#feed tbody").prepend('<%= j render partial:'feeds/feed', :locals => {:feed => @feed } %>');
+$("#company_task tr[data-task-id='<%= @task.id %>']").remove();
+<% end %>

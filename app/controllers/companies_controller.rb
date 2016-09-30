@@ -5,8 +5,13 @@ class CompaniesController < ApplicationController
   # GET /companies.json
   def index
     @organization = current_user.organization
-    @companies = @organization.companies.all
+    @companies = @organization.companies
     @company = Company.new
+
+    @companies = @companies.where(email: params[:email]) if params[:email].present?
+    @companies = @companies.where(name: params[:name]) if params[:name].present?
+
+  
   end
 
   # GET /companies/1
@@ -14,6 +19,7 @@ class CompaniesController < ApplicationController
   def show
     @company = Company.find(params[:id])
     @feeds = @company.feeds
+    @tasks = @company.tasks.where("is_completed = ?", false)
   end
 
   # GET /companies/new
@@ -74,6 +80,10 @@ class CompaniesController < ApplicationController
       format.html { redirect_to companies_url, notice: 'Company was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def feed_destroy
+    
   end
 
   private
