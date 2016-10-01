@@ -5,7 +5,7 @@ class CreateCompanies < ActiveRecord::Migration[5.0]
       t.text :email
       t.text :address
       t.text :contact
-      t.references :ogranization, foreign_key: true
+      t.references :organization, foreign_key: true
 
       t.timestamps
     end
