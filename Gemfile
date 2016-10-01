@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'devise_invitable', '~> 1.7.0'
+gem 'heroku'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
