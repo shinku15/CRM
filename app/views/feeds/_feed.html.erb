@@ -2,10 +2,10 @@
         <td>
             <div class="media">
               <div class="media-left">
-                <%= feed.feedable_type %><br/>
+                <h4><%= feed.feedable_type %></h4><br/>
               </div>
               <div class="media-body">
-                <h4 class="media-heading"><%= feed.organization.name %></h4>
+                <h4 class="media-heading"><strong><%= feed.company.name %></strong></h4>
                 <%= feed.content %>
                 <br/>
                 <small><%= feed.created_at %></small>
