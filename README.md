@@ -109,3 +109,35 @@ _task.html.erb
         <td><%= link_to 'Destroy', company_task_path(@company,task), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
 @feed.update_attributes(content: @task.description)        
+
+
+// $("tr[data-company-feed-id='<%= @feed.id%>']").hide().after("<%= j render partial:'notes/form1' %>");
+// <%= @note.error.full_messages %>
+// <%= render partial:'notes/form1' %>
+
+$('#myModal').html('<%= j render partial:'form' %>')
+
+<% unless task.is_completed %>
+
+                          _feed.html.erb
+                         <strong><%= link_to 'Edit',edit_company_note_path(feed.company_id, feed.feedable_id),remote: true,'data-toggle': "modal",'data-target': "#myModal"  %></strong>
+
+                         <strong><%= link_to 'Edit',edit_company_note_path(feed.company_id, feed.feedable_id),
+                         id: "edit_link",remote: true %></strong>
+
+
+                          edit.js.erb
+                          $('#myModal').html('<%= j render partial:'form' %>')
+
+                           $("[company_feed data-company-feed-id='<%= @feed.id%>']").hide().after("<%= j render partial:'notes/form1' %>");
+
+                          _task.html.erb
+                           <% unless task.is_completed %>
+                           <%= link_to 'Complete', complete_company_task_path(@company, task), method: :put,remote: true,
+                style: 'margin-right:10px;' %>
+                <% end %>
+
+
+<div>
+                      <%= f.check_box :is_completed, id: check_box %> Complete </br></br>
+                      </div> 

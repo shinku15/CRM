@@ -20,6 +20,11 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     @feeds = @company.feeds
     @tasks = @company.tasks.where("is_completed = ?", false)
+    @task = @company.tasks.new
+    @note = @company.notes.new
+    @user = current_user
+    @users = @user.organization.users
+
   end
 
   # GET /companies/new

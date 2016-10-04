@@ -1,29 +1,50 @@
  <tr data-company-feed-id='<%= feed.id%>'>
   <td>
     <div class="media">
-              <div class="media-left">
-                <h3><strong><%= feed.feedable_type %></strong></h3><br/>
-              </div>
-                  <div class="media-body">
-                        <h4 class="media-heading"><%= feed.content %></h4>
-                           <%= feed.created_at %><br/>
-                           <%= feed.organization.name %><br/>
-                        
-                        <% if feed.feedable_type=='Note' %>
+      <div class="media-left">
+        <%if feed.feedable_type=="Note" %>
+          <%= icon 'sticky-note' %>
+          <% else %>
+          <%= icon 'check-square' %>
+        <% end %><br/>
+      </div>
+      <div class="media-body">
+          <h4 class="media-heading"><%= feed.content %></h4>
+             <%= feed.created_at %><br/>
+             <%= feed.organization.name %><br/>
 
-                         <strong><%= link_to 'Edit',edit_company_note_path(feed.company_id, feed.feedable_id),remote: true, 'data-toggle': 
-                         "modal",'data-target': "#myModal"  %></strong>
-                          <strong><%= link_to 'Destroy', company_note_path(feed.company_id, feed.feedable_id), method: :delete, data: { confirm: 
-                            'Are you sure?' }, remote: true %></strong>
-                        
-                        <% else %>
-                          <strong><%= link_to 'Edit', edit_company_task_path(feed.company_id,feed.feedable_id),remote: true, 'data-toggle': "modal",'data-target': "#myModal"  %></strong>
-                          <strong><%= link_to 'Destroy', company_task_path(feed.company_id,feed.feedable_id), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %></strong>
+              <%if feed.feedable_type=='Note' %>
+                 <strong><%= link_to edit_company_note_path(feed.company_id, feed.feedable_id),
+                 remote: true,'data-toggle': "modal",'data-target': "#myModal" do %>
+                 <%= icon 'pencil'%>
+                 Edit
+                 <%end%>
+                 </strong>
+                 &nbsp;&nbsp;
 
-                        <% end %>
-                  </div>
-        </div>
+                  <strong><%= link_to company_note_path(feed.company_id, feed.feedable_id),
+                  method: :delete, data: { confirm:'Are you sure?' }, remote: true do %>
+                  <%= icon 'trash' %>
+                  Delete
+                  <%end%>
+                  </strong>
+              <%else%>
+                  <strong><%= link_to edit_company_task_path(feed.company_id,feed.feedable_id),
+                  remote: true, 'data-toggle': "modal",'data-target': "#myModal" do %>
+                  <%= icon 'pencil'%>
+                  Edit
+                  <%end%>
+                  </strong>
+                  &nbsp;&nbsp;
+
+                  <strong><%= link_to company_task_path(feed.company_id,feed.feedable_id),
+                   method: :delete, data: { confirm: 'Are you sure?' }, remote: true do %>
+                   <%= icon 'trash' %>
+                   Delete
+                   <%end%>
+                  </strong>
+                <%end%>
+            </div>
+      </div>
   </td>
 </tr>
-
-

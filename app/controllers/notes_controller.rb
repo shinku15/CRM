@@ -33,7 +33,7 @@ class NotesController < ApplicationController
     @user = current_user
     @company = Company.find(params[:company_id])
     @note = Note.find(params[:id])
-
+    @feed = Feed.where(feedable_type: "Note").where(feedable_id: @note.id)
     respond_to do |format|
         format.html 
         format.js

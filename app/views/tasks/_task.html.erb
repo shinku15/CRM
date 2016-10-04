@@ -3,7 +3,7 @@
   <td>
       <div class="media">
               <div class="media-left">
-               
+
               </div>
               <div class="media-body">
                 <h4 class="media-heading"><%= task.description %></h4>
@@ -16,23 +16,26 @@
                 <strong><small>Due Date:</small></strong><%= task.completed_on %>
                 <br />
 
-                <strong><small>Status :</small></strong><%= task.is_completed %>
-                <br />
+                <%= link_to edit_company_task_path(@company,task),remote: true,
+                'data-toggle': "modal",'data-target': "#myModal", style: 'margin-right:10px;' do %>
+                <%= icon 'pencil'%>
+                Edit
+                <%end%>
 
-                <%= link_to 'Edit', edit_company_task_path(@company,task),remote: true, 'data-toggle': "modal",'data-target': "#myModal", style: 'margin-right:10px;' %>
+               <%= link_to complete_company_task_path(@company, task), method: :put,remote: true,
+                style: 'margin-right:10px;' do %>
+                <%= icon 'check-square-o'%>
+                Complete
+                <%end%>
 
-                <% unless task.is_completed %>
-                <%= link_to 'Complete', complete_company_task_path(@company, task), method: :put,remote: true,
-                style: 'margin-right:10px;' %>
-                <% end %>
-
-
-                <%= link_to 'Destroy', company_task_path(@company,task), remote: true, method: :delete, data: { confirm: 'Are you sure?' },
-                  style: 'margin-right:10px;' %>
+                <%= link_to company_task_path(@company,task), remote: true,
+                method: :delete, data: { confirm: 'Are you sure?' },
+                style: 'margin-right:10px;' do %>
+                <%= icon 'trash'%>
+                Delete
+                <%end%>
               </div>
         </div>
     </td>
 
 </tr>
-
-

@@ -5,8 +5,8 @@
   $('#myModal').modal("hide");
   $("table#task tbody").prepend('<%= j render partial:'task', :locals => {:task => @task } %>');
   $("table#company_task tbody").prepend("<%= j render partial: 'task', :locals => {:task => @task } %>");
-  
+  $("#task_description").val("");
+
   // $('#new_task').remove()
   // $('#new_link').show()
 <% end %>
-

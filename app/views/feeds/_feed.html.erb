@@ -2,7 +2,13 @@
         <td>
             <div class="media">
               <div class="media-left">
-                <h4><%= feed.feedable_type %></h4><br/>
+                <h4><%if feed.feedable_type=="Note" %>
+                  <%= icon 'sticky-note' %>
+                  <% else %>
+                  <%= icon 'check-square' %>
+                  <% end %>
+                </h4>
+                <br/>
               </div>
               <div class="media-body">
                 <h4 class="media-heading"><strong><%= feed.company.name %></strong></h4>
@@ -14,5 +20,3 @@
 
         </td>
       </tr>
-     
-    
