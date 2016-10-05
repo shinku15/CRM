@@ -55,7 +55,19 @@
 
 <div class="container-fluid">
     <div class="row-fluid">
-        <div class="span8 well">
+        <div>
+          <%= form_tag company_path, method: :get, class: "form-inline" do %>
+            <div class="form-group">
+              <%= select_tag "option", options_for_select(@opt.collect {|p| [ p['name'], p['id'] ] }, params[:option]) %>
+              </div>
+
+              <div class="form-group">
+                <%= submit_tag "Search", class: "btn" %>
+              </div>
+            <% end %>
+          </div>
+          <br/>
+          <div class="span8 well">
             <div class="panel panel-default">
                 <table class="table table-striped table-bordered table-hover" id="company_feed">
 

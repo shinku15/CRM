@@ -11,19 +11,26 @@ class CompaniesController < ApplicationController
     @companies = @companies.where(email: params[:email]) if params[:email].present?
     @companies = @companies.where(name: params[:name]) if params[:name].present?
 
-  
+
   end
 
   # GET /companies/1
   # GET /companies/1.json
   def show
     @company = Company.find(params[:id])
-    @feeds = @company.feeds
+
     @tasks = @company.tasks.where("is_completed = ?", false)
     @task = @company.tasks.new
     @note = @company.notes.new
     @user = current_user
     @users = @user.organization.users
+
+    @opt = [{"name"=>"All", "id"=>"001"},{"name"=>"notes", "id"=>"002"}, {"name"=>"tasks", "id"=>"003"}]
+    @feeds = @company.feeds if params[:option]=="001"
+    @feeds = @company.feeds.where(feedable_type: "Note") if params[:option]=="002"
+    @feeds = @company.feeds.where(feedable_type: "Task") if params[:option]=="003"
+
+
 
   end
 
@@ -31,7 +38,7 @@ class CompaniesController < ApplicationController
   def new
     @company = Company.new
     respond_to do |format|
-        format.html 
+        format.html
         format.js
       end
   end
@@ -40,7 +47,7 @@ class CompaniesController < ApplicationController
   def edit
     @company = Company.find(params[:id])
     respond_to do |format|
-        format.html 
+        format.html
         format.js
       end
   end
@@ -88,7 +95,7 @@ class CompaniesController < ApplicationController
   end
 
   def feed_destroy
-    
+
   end
 
   private
