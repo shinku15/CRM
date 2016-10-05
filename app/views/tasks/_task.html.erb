@@ -18,8 +18,7 @@
 
                 <%= link_to complete_company_task_path(@company, task), method: :put,remote: true,
                  style: 'margin-right:10px;' do %>
-                 <%= icon 'check-square-o'%>
-                 Complete
+                 <%= icon 'check-square-o '%>
                  <%end%>
 
                 <%= link_to edit_company_task_path(@company,task),remote: true,
@@ -27,7 +26,7 @@
                 <%= icon 'pencil'%>
                 Edit
                 <%end%>
-                
+
 
                 <%= link_to company_task_path(@company,task), remote: true,
                 method: :delete, data: { confirm: 'Are you sure?' },

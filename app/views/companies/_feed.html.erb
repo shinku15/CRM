@@ -11,7 +11,7 @@
       <div class="media-body">
           <h4 class="media-heading"><%= feed.content %></h4>
              <%= feed.created_at %><br/>
-             <%= feed.organization.name %><br/>
+
 
               <%if feed.feedable_type=='Note' %>
                  <strong><%= link_to edit_company_note_path(feed.company_id, feed.feedable_id),
@@ -28,6 +28,7 @@
                   Delete
                   <%end%>
                   </strong>
+                  &nbsp;&nbsp;
               <%else%>
                   <strong><%= link_to edit_company_task_path(feed.company_id,feed.feedable_id),
                   remote: true, 'data-toggle': "modal",'data-target': "#myModal" do %>
@@ -43,7 +44,9 @@
                    Delete
                    <%end%>
                   </strong>
+                  &nbsp;&nbsp;
                 <%end%>
+                <strong><%= feed.organization.name %><br/></strong>
             </div>
       </div>
   </td>
