@@ -18,7 +18,7 @@ class CompaniesController < ApplicationController
   # GET /companies/1.json
   def show
     @company = Company.find(params[:id])
-
+    @feeds = @company.feeds
     @tasks = @company.tasks.where("is_completed = ?", false)
     @task = @company.tasks.new
     @note = @company.notes.new
