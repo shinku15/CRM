@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.permit(:invite, keys: [:organization_id])
   end
+
+  def after_sign_in_path_for(resource)
+      staticpages_show_path
+  end
 end
