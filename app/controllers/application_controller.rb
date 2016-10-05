@@ -13,6 +13,6 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_in_path_for(resource)
-      staticpages_show_path
+      feeds_path
   end
 end

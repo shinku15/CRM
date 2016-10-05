@@ -10,8 +10,8 @@
         </h4>
           <%=icon 'phone' %>&nbsp;&nbsp;<%= company.contact %>
           <br/>
-          <%= company.organization.name %>
-          <br/>
+
+
           <small><%= link_to edit_company_path(company),
           remote: true,'data-toggle': "modal",'data-target': "#myModal" do %>
             <%= icon 'pencil' %>
@@ -25,6 +25,10 @@
               Delete
               <%end%>
           </small>
+          &nbsp;&nbsp;
+          <small>
+          (<%= company.organization.name %>)
+        </small>
         </div>
       </div>
   </td>
