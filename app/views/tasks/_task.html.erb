@@ -16,17 +16,18 @@
                 <strong><small>Due Date:</small></strong><%= task.completed_on %>
                 <br />
 
+                <%= link_to complete_company_task_path(@company, task), method: :put,remote: true,
+                 style: 'margin-right:10px;' do %>
+                 <%= icon 'check-square-o'%>
+                 Complete
+                 <%end%>
+
                 <%= link_to edit_company_task_path(@company,task),remote: true,
                 'data-toggle': "modal",'data-target': "#myModal", style: 'margin-right:10px;' do %>
                 <%= icon 'pencil'%>
                 Edit
                 <%end%>
-
-               <%= link_to complete_company_task_path(@company, task), method: :put,remote: true,
-                style: 'margin-right:10px;' do %>
-                <%= icon 'check-square-o'%>
-                Complete
-                <%end%>
+                
 
                 <%= link_to company_task_path(@company,task), remote: true,
                 method: :delete, data: { confirm: 'Are you sure?' },
