@@ -30,11 +30,25 @@
 
     <div class="form-group">
       <%= f.label :completed_on %><br/>
-      <%= f.date_select :completed_on, class: "form-control" %>
+      <div class="form-group">
+            <div class='input-group date' id='datetimepicker2'>
+                <%= f.text_field :completed_on, class: "form-control" %>
+                <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker2').datetimepicker();
+        });
+        </script>
     </div>
 
       <%= f.hidden_field :company_id, value: @company.id %>
       <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.hidden_field :organization_id, value: current_user.organization.id %>
 
     <div class="form-group">
       <%= f.label :Assign_to %><br/>

@@ -23,7 +23,7 @@ class NotesController < ApplicationController
     @note = @company.notes.new
 
     respond_to do |format|
-        format.html 
+        format.html
         format.js
       end
   end
@@ -35,7 +35,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     @feed = Feed.where(feedable_type: "Note").where(feedable_id: @note.id)
     respond_to do |format|
-        format.html 
+        format.html
         format.js
       end
 
@@ -54,7 +54,7 @@ class NotesController < ApplicationController
         @feed = @note.build_feed(organization_id: @organization_id, company_id: @company.id, content: @note.description)
         @feed.save
         format.html { redirect_to company_notes_path(@company, @note), notice: 'Note was successfully created.' }
-        format.js 
+        format.js
         format.json { render :show, status: :created, location: @note }
 
       else
@@ -108,6 +108,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:description, :company_id, :user_id)
+      params.require(:note).permit(:description, :company_id, :user_id,:organization_id)
     end
 end

@@ -6,6 +6,7 @@
   $("table#task tbody").prepend('<%= j render partial:'task', :locals => {:task => @task } %>');
   $("table#company_task tbody").prepend("<%= j render partial: 'task', :locals => {:task => @task } %>");
   $("#task_description").val("");
+  $("#task_completed_on").val("");
 
   // $('#new_task').remove()
   // $('#new_link').show()

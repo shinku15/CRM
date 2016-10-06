@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  
-  resources :companies do 
+
+  resources :companies do
       resources :notes
         resources :tasks do
           member do
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       end
    end
 
-
+   resources :organizations,only: [:index]
 
    root to: "staticpages#index"
 

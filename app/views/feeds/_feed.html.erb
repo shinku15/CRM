@@ -1,22 +1,22 @@
 <tr data-feed-id='<%= feed.id%>'>
         <td>
-            <div class="media">
-              <div class="media-left">
-                <h4><%if feed.feedable_type=="Note" %>
-                  <%= icon 'sticky-note' %>
-                  <% else %>
-                  <%= icon 'check-square' %>
-                  <% end %>
-                </h4>
-                <br/>
-              </div>
-              <div class="media-body">
-                 <strong class="media-heading"><%= feed.company.name %></strong><br/>
-                <%= feed.content %>
-                <br/>
-                <small><%= feed.created_at %></small>
-              </div>
+          <div class="media">
+            <div class="media-left">
+              <h4><%if feed.feedable_type=="Note" %>
+                <%= icon 'sticky-note' %>
+                <% else %>
+                <%= icon 'check-square' %>
+                <% end %>
+              </h4>
+              <br/>
             </div>
+            <div class="media-body">
+               <strong class="media-heading"><%=link_to feed.content,company_path(feed.company_id) %></strong><br/>
+              <%=  feed.company.name %>
+              <br/>
+              <small><%= feed.created_at %></small>
+            </div>
+          </div>
 
         </td>
       </tr>

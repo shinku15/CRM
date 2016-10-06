@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160926114050) do
+ActiveRecord::Schema.define(version: 20161006084440) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -35,13 +35,23 @@ ActiveRecord::Schema.define(version: 20160926114050) do
     t.index ["organization_id"], name: "index_feeds_on_organization_id"
   end
 
+  create_table "mobile_numbers", force: :cascade do |t|
+    t.integer  "number"
+    t.integer  "company_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_mobile_numbers_on_company_id"
+  end
+
   create_table "notes", force: :cascade do |t|
     t.text     "description"
     t.integer  "company_id"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.integer  "organization_id"
     t.index ["company_id"], name: "index_notes_on_company_id"
+    t.index ["organization_id"], name: "index_notes_on_organization_id"
     t.index ["user_id"], name: "index_notes_on_user_id"
   end
 
@@ -55,15 +65,17 @@ ActiveRecord::Schema.define(version: 20160926114050) do
   create_table "tasks", force: :cascade do |t|
     t.text     "description"
     t.integer  "company_id"
-    t.date     "completed_on"
+    t.datetime "completed_on"
     t.integer  "user_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.integer  "assign_to"
-    t.boolean  "is_completed", default: false
+    t.boolean  "is_completed",    default: false
     t.date     "completed_at"
     t.integer  "completed_by"
+    t.integer  "organization_id"
     t.index ["company_id"], name: "index_tasks_on_company_id"
+    t.index ["organization_id"], name: "index_tasks_on_organization_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 

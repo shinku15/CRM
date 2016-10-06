@@ -45,6 +45,16 @@
       <%= f.text_field :contact,class: "form-control" %>
     </div>
 
+    <div id="Mobile">
+        <%= f.fields_for :mobile_numbers do |mobile_number| %>
+          <%= render 'mobile_number_fields', f: mobile_number %>
+        <% end %>
+
+        <div class="links">
+        <%= link_to_add_association 'add Number', f, :mobile_numbers %>
+        </div>
+  </div>
+
       <%= f.hidden_field :organization_id, value: current_user.organization_id %>
     </div>
 

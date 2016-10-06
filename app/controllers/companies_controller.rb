@@ -37,6 +37,8 @@ class CompaniesController < ApplicationController
   # GET /companies/new
   def new
     @company = Company.new
+    @company.mobile_numbers.new
+
     respond_to do |format|
         format.html
         format.js
@@ -57,12 +59,17 @@ class CompaniesController < ApplicationController
   def create
     @company = Company.new(company_params)
 
+    @company.mobile_numbers.each do |t|
+      t.company_id = @company.id
+    end
+
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
         format.js
         format.json { render :show, status: :created, location: @company }
       else
+        puts '>>>>>>', @company.errors.inspect
         format.html { render :new }
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
@@ -106,6 +113,6 @@ class CompaniesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def company_params
-      params.require(:company).permit(:name, :email, :address, :contact, :organization_id)
+      params.require(:company).permit(:name, :email, :address, :contact, :organization_id, mobile_numbers_attributes: [:id, :number, :_destroy])
     end
 end

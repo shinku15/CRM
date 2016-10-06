@@ -18,8 +18,8 @@
       </div>
 
       <%= f.hidden_field :company_id, value: @company.id %>
-
-       <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.hidden_field :user_id, value: @user.id %>
+      <%= f.hidden_field :organization_id, value: current_user.organization.id %>
 
 
     <div class=" form-group actions">

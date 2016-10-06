@@ -26,7 +26,7 @@ Things you may want to cover:
 
 <% unless @task.is_completed %>
         <% form_for ([@company, @task]) do |f| %>
-         
+
          <div>
           <%= f.label :Status %>
           <%= check_box_tag :is_completed %>Completed</br></br>
@@ -49,13 +49,13 @@ Things you may want to cover:
               <h4 class="modal-title" id="myModalLabel">Edit Company</h4>
             </div>
             <div class="modal-body">
-              
+
             <div class="modal-footer">
             </div>
 
           </div>
         </div>
-      </div> 
+      </div>
 
 <table class="table table-striped table-bordered table-hover" id="feed">
   <thead>
@@ -140,4 +140,12 @@ $('#myModal').html('<%= j render partial:'form' %>')
 
 <div>
                       <%= f.check_box :is_completed, id: check_box %> Complete </br></br>
-                      </div> 
+                      </div>
+
+
+                      task
+                      <%= f.label :completed_on %><br/>
+                      <%= f.text_field :completed_on, 'data-provide': 'datepicker',class: "form-control" %>
+                      <span class="input-group-addon">
+                                   <span class="glyphicon glyphicon-calendar"></span>
+                      </span>

@@ -28,7 +28,7 @@ class TasksController < ApplicationController
    @task = @company.tasks.new
 
    respond_to do |format|
-        format.html 
+        format.html
         format.js
       end
   end
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     respond_to do |format|
-        format.html 
+        format.html
         format.js
       end
   end
@@ -72,7 +72,7 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1
   # PATCH/PUT /tasks/1.json
   def update
-    
+
     @organization = current_user.organization
     @users = @organization.users
     @user = current_user
@@ -83,22 +83,22 @@ class TasksController < ApplicationController
 
       respond_to do |format|
           if @task.update_attributes(task_params)
-            
+
             if @feed
                   @feed.update_attributes(content: @task.description)
-                else 
+                else
             end
                   format.html { redirect_to company_task_path(@company, @task), notice: 'Task was successfully updated.' }
                   format.js
                   format.json { render :show, status: :ok, location: @task }
             else
-                    
+
                   format.html { render :edit }
                   format.js
                   format.json { render json: @task.errors, status: :unprocessable_entity }
-          
+
             end
-         end 
+         end
   end
 
   # DELETE /tasks/1
@@ -110,7 +110,7 @@ class TasksController < ApplicationController
     @company = Company.find(params[:company_id])
     @task = Task.find(params[:id])
     @feed = @task.feed
-    
+
     @task.destroy
     respond_to do |format|
       format.html { redirect_to company_tasks_path(@company), notice: 'Task was successfully destroyed.' }
@@ -124,8 +124,8 @@ class TasksController < ApplicationController
     @user = current_user
     @company = Company.find(params[:company_id])
     @task = @company.tasks.find(params[:id])
-    
-    if @task.update_attributes(completed_at: Date.today, completed_by: current_user.id, is_completed: true) 
+
+    if @task.update_attributes(completed_at: Date.today, completed_by: current_user.id, is_completed: true)
       @feed = @task.build_feed(organization_id: @organization.id, company_id: @company.id, content: @task.description)
       @feed.save
     end
@@ -140,6 +140,6 @@ class TasksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:description, :company_id, :completed_on, :user_id, :assign_to, :is_completed)
+      params.require(:task).permit(:description, :company_id, :completed_on, :user_id, :organization_id, :assign_to, :is_completed)
     end
 end
