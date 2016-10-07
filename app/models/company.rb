@@ -1,8 +1,7 @@
 class Company < ApplicationRecord
   validates :name, :presence => {message: "name must be present"}
   validates :contact, presence:true,length: { in: 6..10 },numericality: { only_integer: true }
-  validates :address, presence: true
-
+  validates_presence_of :address, :message => "Email is required."
   belongs_to :organization, optional: :true
   has_many :notes, dependent:  :destroy
   has_many :tasks, dependent:  :destroy
