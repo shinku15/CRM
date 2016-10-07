@@ -56,7 +56,7 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div>
-          <%= form_tag company_path, method: :get, class: "form-inline" do %>
+          <%= form_tag company_path, method: :get, class: "form-inline", remote: :true do %>
             <div class="form-group">
               <%= select_tag "option", options_for_select(@opt.collect {|p| [ p['name'], p['id'] ] }, params[:option]) %>
               </div>

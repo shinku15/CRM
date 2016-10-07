@@ -1,0 +1,26 @@
+<tr data-organization-task-id='<%= task.id%>'>
+  <td>
+    <div class="media">
+      <div class="media-left">
+        <h4>
+          <%if task.is_completed == false %>
+          <%= icon 'square-o' %>
+          <%else%>
+          <%= icon 'check-square'%>
+          <%end%>
+        </h4>
+        <br/>
+      </div>
+      <div class="media-body">
+         <strong class="media-heading">&nbsp;<%= link_to task.description, company_path(task.company_id) %></strong><br/>
+        &nbsp;<%= task.company.name %>
+        <br/>
+        <%= icon 'user'%>&nbsp;<%= task.assigned.nil? ? '-' : task.assigned.email %>
+        <br/>
+        <small><%= icon 'pencil'%>&nbsp;<%= task.created_at %></small>
+        &nbsp;&nbsp;
+        <small><%= icon 'check-square-o'%>&nbsp;<%= task.completed_on %></small>
+      </div>
+    </div>
+  </td>
+</tr>

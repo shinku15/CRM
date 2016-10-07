@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       end
    end
 
-   resources :organizations,only: [:index]
+   resources :organizations do
+     get 'search'
+   end
 
    root to: "staticpages#index"
 

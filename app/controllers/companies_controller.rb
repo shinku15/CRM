@@ -11,7 +11,6 @@ class CompaniesController < ApplicationController
     @companies = @companies.where(email: params[:email]) if params[:email].present?
     @companies = @companies.where(name: params[:name]) if params[:name].present?
 
-
   end
 
   # GET /companies/1
@@ -30,6 +29,10 @@ class CompaniesController < ApplicationController
     @feeds = @company.feeds.where(feedable_type: "Note") if params[:option]=="002"
     @feeds = @company.feeds.where(feedable_type: "Task") if params[:option]=="003"
 
+    respond_to do |format|
+        format.html
+        format.js
+      end
 
 
   end
