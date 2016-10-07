@@ -11,6 +11,10 @@ class CompaniesController < ApplicationController
     @companies = @companies.where(email: params[:email]) if params[:email].present?
     @companies = @companies.where(name: params[:name]) if params[:name].present?
 
+    respond_to do |format|
+        format.html
+        format.js
+      end  
   end
 
   # GET /companies/1
