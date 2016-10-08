@@ -1,5 +1,17 @@
-$(document).ready(function(){
-    $("#select_form select").on("change", function() {
+$(document).on("turbolinks:load", function(){
+    $("#select_form option").on("change", function() {
       $(this).submit();
     });
 });
+
+$(document).on("turbolinks:load", function(){
+   $("#select_form1 select").on("change", function() {
+    $(this).submit();
+   });
+ });
+
+ $(document).on("turbolinks:load", function(){
+    $("#select_form2 select").on("change", function() {
+     $(this).submit();
+    });
+  });

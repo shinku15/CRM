@@ -18,7 +18,4 @@ class ApplicationController < ActionController::Base
       feeds_path
   end
 
-  def after_update_path_for(resource)
-    staticpages_show_path
-  end
 end

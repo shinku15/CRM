@@ -17,9 +17,9 @@
         <br/>
         <%= icon 'user'%>&nbsp;<%= task.assigned.nil? ? '-' : task.assigned.username %>
         <br/>
-        <small><%= icon 'pencil'%>&nbsp;<%= task.created_at.to_formatted_s(:long) %></small>
+        <small><%= icon 'pencil'%>&nbsp;<%= task.created_at.to_date %></small>
         &nbsp;&nbsp;
-        <small><%= icon 'check-square-o'%>&nbsp;<%=task.completed_on.nil? ? '-': task.completed_on.to_formatted_s(:long)%></small>
+        <small><%= icon 'check-square-o'%>&nbsp;<%=task.completed_on.nil? ? '-': task.completed_on.to_date %></small>
       </div>
     </div>
   </td>

@@ -11,7 +11,7 @@
                      style: 'margin-right:10px;' do %>
                      <%= icon 'square-o '%>
                      <%end%>
-                     <%= task.completed_on.to_formatted_s(:long) %>
+                     <%=  task.completed_on.nil? ? '-' :  task.completed_on.to_date %>
                      <%= task.description %>
                 </div>
                 <%= task.assigned.nil? ? '-' : task.assigned.username %>
