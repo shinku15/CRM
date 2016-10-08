@@ -10,9 +10,10 @@
     <p><%= f.label field %><br />
     <%= f.text_field field,class: "form-control" %></p>
 
+
    <%= f.hidden_field :organization_id, value: current_user.organization_id %>
 
-  <% end -%>
+  <% end%>
   </div>
 
     <p><%= f.submit t("devise.invitations.new.submit_button"),class: "btn" %></p>

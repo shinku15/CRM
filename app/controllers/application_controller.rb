@@ -11,6 +11,8 @@ class ApplicationController < ActionController::Base
 
     devise_parameter_sanitizer.permit(:invite, keys: [:organization_id])
 
+    devise_parameter_sanitizer.permit(:accept_invitation, keys: [:username])
+
     devise_parameter_sanitizer.permit(:account_update,keys: [:username, :email, :password, :password_confirmation, :current_password])
   end
 
