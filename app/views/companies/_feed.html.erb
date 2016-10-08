@@ -10,7 +10,7 @@
       </div>
       <div class="media-body">
           <h4 class="media-heading"><%= feed.content %></h4>
-             <%= feed.created_at %><br/>
+             <%= feed.created_at.to_formatted_s(:long) %><br/>
 
 
               <%if feed.feedable_type=='Note' %>

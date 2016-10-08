@@ -64,16 +64,12 @@
 <div class="container-fluid">
     <div class="row-fluid">
         <div>
-          <%= form_tag company_path, method: :get, class: "form-inline", remote: :true do %>
+          <%= form_tag company_path, method: :get, class: "form-inline", id: "lead_form", remote: :true do %>
             <div class="form-group">
               <%= select_tag "option", options_for_select(@opt.collect {|p| [ p['name'], p['id'] ] }, params[:option]) %>
-              </div>
-
-              <div class="form-group">
-                <%= submit_tag "Search", class: "btn" %>
-              </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
+        </div>
           <br/>
           <div class="span8 well">
             <div class="panel panel-default">

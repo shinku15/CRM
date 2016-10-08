@@ -6,20 +6,16 @@
 
               </div>
               <div class="media-body">
-                <h4 class="media-heading"><%= task.description %></h4>
-                <strong><h5>Assigned To:</h5></strong><%= task.assigned.email %>
-                <br/>
-
-                 <strong><small>Created by:</small></strong><%= task.user.email %>
-                 <br/>
-
-                <strong><small>Due Date:</small></strong><%= task.completed_on %>
-                <br />
-
-                <%= link_to complete_company_task_path(@company, task), method: :put,remote: true,
-                 style: 'margin-right:10px;' do %>
-                 <%= icon 'square-o '%>
-                 <%end%>
+                <div class="media-heading">
+                    <%= link_to complete_company_task_path(@company, task), method: :put,remote: true,
+                     style: 'margin-right:10px;' do %>
+                     <%= icon 'square-o '%>
+                     <%end%>
+                     <%= task.completed_on.to_formatted_s(:long) %>
+                     <%= task.description %>
+                </div>
+                <%= task.assigned.nil? ? '-' : task.assigned.username %>
+                &nbsp;&nbsp;
 
                 <%= link_to edit_company_task_path(@company,task),remote: true,
                 'data-toggle': "modal",'data-target': "#myModal", style: 'margin-right:10px;' do %>

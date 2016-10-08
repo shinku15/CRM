@@ -14,7 +14,7 @@
                <strong class="media-heading"><%=link_to feed.content,company_path(feed.company_id) %></strong><br/>
               <%=  feed.company.name %>
               <br/>
-              <small><%= feed.created_at %></small>
+              <small><%= feed.created_at.to_formatted_s(:long) %></small>
             </div>
           </div>
 

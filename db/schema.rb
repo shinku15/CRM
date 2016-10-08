@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006084440) do
+ActiveRecord::Schema.define(version: 20161007084038) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(version: 20161006084440) do
     t.string   "invited_by_type"
     t.integer  "invited_by_id"
     t.integer  "invitations_count",      default: 0
+    t.string   "username"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invitations_count"], name: "index_users_on_invitations_count"

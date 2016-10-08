@@ -7,12 +7,18 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
 
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :company_name, :company_domain, :password, :password_confirmation])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:email,:username, :company_name, :company_domain, :password, :password_confirmation])
 
     devise_parameter_sanitizer.permit(:invite, keys: [:organization_id])
+
+    devise_parameter_sanitizer.permit(:account_update,keys: [:username, :email, :password, :password_confirmation, :current_password])
   end
 
   def after_sign_in_path_for(resource)
       feeds_path
+  end
+
+  def after_update_path_for(resource)
+    staticpages_show_path
   end
 end

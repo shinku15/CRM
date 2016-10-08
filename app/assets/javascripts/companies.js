@@ -3,8 +3,16 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-$(document).ready(function(){
-    $("#check_box").click(function() {
-      $(this).closest("form").submit();
-    });
+$(document).on("turbolinks:load", function(){
+
+  var callback = function(){
+    $("#search").submit();
+  };
+  $('#email, #name').keyup( $.debounce( 250, callback ) );
+
+
+  $("#lead_form select, #select_form select").on("change", function() {
+    $(this).submit();
+  });
+
 });

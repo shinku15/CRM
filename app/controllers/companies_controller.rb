@@ -14,7 +14,7 @@ class CompaniesController < ApplicationController
     respond_to do |format|
         format.html
         format.js
-      end  
+      end
   end
 
   # GET /companies/1
@@ -73,11 +73,13 @@ class CompaniesController < ApplicationController
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
-        format.js
+        format.js {  flash[:notice] = "Company Created" }
+
         format.json { render :show, status: :created, location: @company }
       else
         puts '>>>>>>', @company.errors.inspect
         format.html { render :new }
+        format.js
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end
@@ -93,6 +95,7 @@ class CompaniesController < ApplicationController
         format.json { render :show, status: :ok, location: @company }
       else
         format.html { render :edit }
+        format.js
         format.json { render json: @company.errors, status: :unprocessable_entity }
       end
     end

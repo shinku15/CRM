@@ -15,11 +15,11 @@
          <strong class="media-heading">&nbsp;<%= link_to task.description, company_path(task.company_id) %></strong><br/>
         &nbsp;<%= task.company.name %>
         <br/>
-        <%= icon 'user'%>&nbsp;<%= task.assigned.nil? ? '-' : task.assigned.email %>
+        <%= icon 'user'%>&nbsp;<%= task.assigned.nil? ? '-' : task.assigned.username %>
         <br/>
-        <small><%= icon 'pencil'%>&nbsp;<%= task.created_at %></small>
+        <small><%= icon 'pencil'%>&nbsp;<%= task.created_at.to_formatted_s(:long) %></small>
         &nbsp;&nbsp;
-        <small><%= icon 'check-square-o'%>&nbsp;<%= task.completed_on %></small>
+        <small><%= icon 'check-square-o'%>&nbsp;<%=task.completed_on.nil? ? '-': task.completed_on.to_formatted_s(:long)%></small>
       </div>
     </div>
   </td>

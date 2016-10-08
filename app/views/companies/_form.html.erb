@@ -9,7 +9,6 @@
         <h4 class="modal-title" id="myModalLabel">Company</h4>
       </div>
 
-
       <% if company.errors.any? %>
         <div id="error_explanation">
           <h2><%= pluralize(company.errors.count, "error") %> prohibited this company from being saved:</h2>
@@ -46,6 +45,7 @@
     </div>
 
     <div id="Mobile">
+        <%= f.label "Mobile Number" %>
         <%= f.fields_for :mobile_numbers do |mobile_number| %>
           <%= render 'mobile_number_fields', f: mobile_number %>
         <% end %>

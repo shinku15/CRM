@@ -1,9 +1,11 @@
 <% if @company.errors.any? %>
-
+$('#myModal').html("<%= j render partial: "error" %>")
+$('#myModal').html("<%= j render partial: 'form', :locals => {:company => @company }%>")
 
 <% else %>
   $('#myModal').modal("hide");
   $("table#company tbody").prepend('<%= j render partial:'company', :locals => {:company => @company } %>');
+  $('#notice').html("<%=j flash[:notice] %>");
   // $('#new_company').remove()
   // $('#new_link').show()
 

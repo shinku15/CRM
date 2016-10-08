@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-md-6">
-    <h3><%= icon 'envelope'%> <%= @user.email %></h3>
-    <h3><%= icon 'building'%> <%= @user.organization.name %></h3>
+    <h3><%= icon 'user' %>&nbsp;<%= @user.username %></h3>
+    <h3><%= icon 'envelope'%>&nbsp;<%= @user.email %></h3>
+    <h3><%= icon 'building'%>&nbsp;<%= @user.organization.name %></h3>
     <%= link_to "Invite", new_user_invitation_path %>
   </div>
 </div>
