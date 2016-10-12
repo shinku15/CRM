@@ -2,26 +2,21 @@ class OrganizationsController < ApplicationController
   def index
     @organization = current_user.organization
     @tasks = @organization.tasks.includes(:company)
-    @opt = [{"name"=>"All", "id"=>"001"},{"name"=>"Overdue", "id"=>"002"}, {"name"=>"today", "id"=>"003"},
-            {"name"=>"Tomorrow", "id"=>"004"}]
 
-    @tasks = @tasks.where(is_completed: "f").all if params[:option]=="001"
-    @tasks = @tasks.where(is_completed: "f").where("date(completed_on)< ?",Date.today) if params[:option]=="002"
-    @tasks = @tasks.where(is_completed: "f").where("date(completed_on)= ?", Date.today) if params[:option]=="003"
-    @tasks = @tasks.where(is_completed: "f").where("date(completed_on)= ?",Date.tomorrow) if params[:option]=="004"
+    @tasks = @tasks.where(is_completed: false).all if params[:mode]=="due" && params[:day]=="all"
+    @tasks = @tasks.where(is_completed: false).where("date(completed_at)< ?",Date.today) if params[:mode]=="due" && params[:day]=="overdue"
+    @tasks = @tasks.where(is_completed: false).where("date(completed_at)= ?",Date.yesterday) if params[:mode]=="due" && params[:day]=="yesterday"
+    @tasks = @tasks.where(is_completed: false).where("date(completed_at)= ?",Date.today) if params[:mode]=="due" && params[:day]=="today"
+    @tasks = @tasks.where(is_completed: false).where("date(completed_at)= ?",Date.tomorrow) if params[:mode]=="due" && params[:day]=="tomorrow"
 
-
-    @opt1 = [{"name"=>"All", "id"=>"001"},{"name"=>"Today", "id"=>"002"},{"name"=>"yesterday", "id"=>"003"},
-         {"name"=>"Earlier", "id"=>"004"}]
-
-    @tasks = @tasks.where(is_completed: "t").all if params[:option1]=="001"
-    @tasks = @tasks.where(is_completed: "t").where("date(completed_at)= ?", Date.today) if params[:option1]=="002"
-    @tasks = @tasks.where(is_completed: "t").where("date(completed_at)= ?", Date.yesterday) if params[:option1]=="003"
-    @tasks = @tasks.where(is_completed: "t").where("date(completed_at)< ?",Date.today) if params[:option1]=="004"
+    @tasks = @tasks. where(is_completed: true).all if params[:mode]=="complete" && params[:day]=="all"
+    @tasks = @tasks. where(is_completed: true). where("date(completed_on)< ?", Date.today) if params[:mode]=="complete" && params[:day]=="earlier"
+    @tasks = @tasks. where(is_completed: true). where("date(completed_on)= ?", Date.yesterday) if params[:mode]=="complete" && params[:day]=="yesterday"
+    @tasks = @tasks. where(is_completed: true). where("date(completed_on)= ?", Date.today) if params[:mode]=="complete" && params[:day]=="today"
 
 
     @opt2 = @organization.users
-    var = params[:option2] if params[:option2].present?
+    var = params[:user] if params[:user].present?
 
     if var.nil?
       @tasks = @tasks.all

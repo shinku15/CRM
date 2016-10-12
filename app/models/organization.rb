@@ -4,4 +4,5 @@ class Organization < ApplicationRecord
   has_many :feeds,dependent:  :destroy
   has_many :tasks,dependent: :destroy
   has_many :notes,dependent: :destroy
+  has_many :roles, dependent: :destroy
 end

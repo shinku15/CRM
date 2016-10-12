@@ -233,3 +233,53 @@ before_action :configure_account_update_params, only: [:update]
  def after_inactive_sign_up_path_for(resource)
    super(resource)
  end
+
+
+#organization-index.html.erb
+<div class="col-md-2">
+<%= form_tag organizations_path, method: :get, class: "form-inline", id: "select_form", remote: :true do %>
+  <div class="form-group">
+      <%= label_tag 'Due' %>
+      <%= select_tag "option", options_for_select(@opt.collect {|p| [ p['name'], p['id'] ] }, params[:option]) %>
+  </div>
+<% end %>
+</div>
+
+
+
+
+
+
+
+
+<div class ="row">
+
+<div class="col-md-2" >
+<span class="label label-primary">Due Task</span>
+  <ul data-due-selector="due-task">
+    <li data-due-option="all"><span class="badge">All</span></li>
+    <li data-due-option="overdue"><span class="badge">Overdue</span></li>
+    <li data-due-option="today"><span class="badge">today</span></li>
+    <li data-due-option="tomorrow"><span class="badge">Tomorrow</span></li>
+  </ul>
+</div>
+
+  <div class="col-md-2 offset-2">
+  <span class="label label-primary">Complete Task</span>
+    <ul data-complete-selector="complete-task">
+      <li data-complete-option="all"><span class="badge">All</span></li>
+      <li data-complete-option="today"><span class="badge">Today</span></li>
+      <li data-complete-option="yesterday"><span class="badge">Yesterday</span></li>
+      <li data-complete-option="earlier"><span class="badge">Earlier</span></li>
+    </ul>
+  </div>
+
+    <div class="col-md-2 offset-4">
+    <%= form_tag organizations_path, method: :get, class: "form-inline", id: "select_form2", remote: :true do %>
+      <div class="form-group">
+        <%= label_tag 'User' %>
+        <%= select_tag "option2", options_for_select(@opt2.collect {|p| [ p['username'], p['id'] ] }, params[:option2]) %>
+      </div>
+    <% end %>
+  </div>
+</div>

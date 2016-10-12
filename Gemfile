@@ -32,6 +32,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'heroku'
+gem "pundit"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

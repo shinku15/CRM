@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161007084038) do
+ActiveRecord::Schema.define(version: 20161010054919) do
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
@@ -60,6 +60,25 @@ ActiveRecord::Schema.define(version: 20161007084038) do
     t.string   "domain"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.integer  "organization_id"
+    t.integer  "user_id"
+    t.boolean  "view_task"
+    t.boolean  "create_task"
+    t.boolean  "update_task"
+    t.boolean  "edit_task"
+    t.boolean  "destroy_task"
+    t.boolean  "view_note"
+    t.boolean  "create_note"
+    t.boolean  "update_note"
+    t.boolean  "edit_note"
+    t.boolean  "destroy_note"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["organization_id"], name: "index_roles_on_organization_id"
+    t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
