@@ -17,4 +17,8 @@
 //= require cocoon
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
+//= require jquery.ba-throttle-debounce
+//= require init
+//= require ./companies/index
+//= require ./companies/show
+//= require ./organizations/index
