@@ -33,6 +33,9 @@ gem 'devise'
 gem 'devise_invitable', '~> 1.7.0'
 gem 'heroku'
 gem "pundit"
+gem 'fcm'
+gem 'slack-api'
+gem 'slack-notifier'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
